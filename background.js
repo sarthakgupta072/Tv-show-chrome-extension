@@ -13,4 +13,11 @@ chrome.runtime.onInstalled.addListener((details) => {
     })
 })
 
-console.log("Background script running")
+
+chrome.runtime.onMessage.addListener((msg, sender, senderResponse) => {
+    console.log(msg)
+    console.log(sender)
+    senderResponse("received message from background")
+    chrome.tabs.sendMessage(sender.tab.id, "Got your message from background!")
+})
+
