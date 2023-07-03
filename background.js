@@ -13,11 +13,11 @@ chrome.runtime.onInstalled.addListener((details) => {
     })
 })
 
-
 chrome.runtime.onMessage.addListener((msg, sender, senderResponse) => {
     console.log(msg)
     console.log(sender)
     senderResponse("received message from background")
+    // To send message to contentScript
     chrome.tabs.sendMessage(sender.tab.id, "Got your message from background!")
 })
 
